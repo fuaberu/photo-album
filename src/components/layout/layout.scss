@@ -1,0 +1,59 @@
+.footer {
+	background-color: cadetblue;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.header {
+	height: 100vh;
+	background-size: cover;
+	transition: all 2s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	h1 {
+		font-size: 50px;
+		color: #fff;
+		text-shadow: -1px 1px 0 #000;
+		font-weight: 700;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.background {
+		width: 100vw;
+		object-fit: cover;
+		overflow: hidden;
+	}
+	select {
+		background: none;
+		padding: 0.5rem 1.5rem;
+		border: 2px solid #fff;
+		outline-color: #fff;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		cursor: pointer;
+		option {
+			padding: 0.5rem 1.5rem;
+			cursor: pointer;
+			color: #000;
+		}
+	}
+	button {
+		padding: 1rem 2.5rem;
+		background: none;
+		border: 2px solid #fff;
+		color: #fff;
+		font-size: 2rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-shadow: -1px 1px 0 #000;
+		cursor: pointer;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
