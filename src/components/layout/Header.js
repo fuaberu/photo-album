@@ -4,7 +4,7 @@ import './layout.scss';
 
 const Header = ({ language, setLanguage, executeScroll }) => {
 	const [imageShow, setImageShow] = useState(0);
-	const { data, error, isLoading } = useGetSearchPhotosQuery({
+	const { data } = useGetSearchPhotosQuery({
 		count: 5,
 		query: 'nature',
 		orientation: 'landscape',

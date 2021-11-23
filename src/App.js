@@ -6,7 +6,7 @@ import Header from './components/layout/Header';
 
 function App() {
 	const [language, setLanguage] = useState('portuguese');
-	const { data, error, isLoading } = useGetCuratedPhotosQuery(30);
+	const { data } = useGetCuratedPhotosQuery(30);
 
 	const seeGallery = useRef();
 
