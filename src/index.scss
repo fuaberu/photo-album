@@ -37,6 +37,9 @@ footer {
 	margin-top: auto;
 }
 
-a {
+a,
+button {
 	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
 }
