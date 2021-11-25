@@ -1,9 +1,13 @@
 .footer {
-	background-color: cadetblue;
+	background-color: #181818;
+	color: #fff;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	a {
+		color: #fff;
+	}
 }
 
 .header {

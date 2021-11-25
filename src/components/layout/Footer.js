@@ -5,7 +5,6 @@ const Footer = ({ language }) => {
 	return (
 		<footer className="footer">
 			<p>
-				Copyright @{new Date().getFullYear()} |{' '}
 				{language === 'portuguese' ? 'Desenvolvido por' : 'Designed by'}{' '}
 				<a
 					href="https://www.linkedin.com/in/kevin-fabel/"
