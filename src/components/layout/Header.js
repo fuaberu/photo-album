@@ -12,13 +12,12 @@ const Header = ({ language, setLanguage, executeScroll }) => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			console.log('time', imageShow);
 			if (imageShow >= 4) {
 				setImageShow(0);
 			} else {
 				setImageShow(imageShow + 1);
 			}
-		}, 6000);
+		}, 8000);
 		return () => clearInterval(interval);
 	});
 
