@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useGetSearchPhotosQuery } from '../../services/pexels';
+
+import background1 from '../../images/pexels-background-1.jpg';
+import background2 from '../../images/pexels-background-2.jpg';
+import background3 from '../../images/pexels-background-3.jpg';
+import background4 from '../../images/pexels-background-4.jpg';
+import background5 from '../../images/pexels-background-5.jpg';
+
 import './layout.scss';
 
 const Header = ({ language, setLanguage, executeScroll }) => {
-	const [imageShow, setImageShow] = useState(0);
-	const { data } = useGetSearchPhotosQuery({
-		count: 5,
-		query: 'nature',
-		orientation: 'landscape',
-	});
+	const [imageShow, setImageShow] = useState(1);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			if (imageShow >= 4) {
-				setImageShow(0);
+			if (imageShow >= 5) {
+				setImageShow(1);
 			} else {
 				setImageShow(imageShow + 1);
 			}
@@ -22,10 +23,32 @@ const Header = ({ language, setLanguage, executeScroll }) => {
 	});
 
 	return (
-		<header
-			className="header"
-			style={{ backgroundImage: `url(${data?.photos[imageShow].src.large})` }}
-		>
+		<header className="header">
+			<img
+				src={background1}
+				alt="background"
+				className={imageShow === 1 ? 'absoluteImage' : 'absoluteImage hidden'}
+			/>
+			<img
+				src={background2}
+				alt="background"
+				className={imageShow === 2 ? 'absoluteImage' : 'absoluteImage hidden'}
+			/>
+			<img
+				src={background3}
+				alt="background"
+				className={imageShow === 3 ? 'absoluteImage' : 'absoluteImage hidden'}
+			/>
+			<img
+				src={background4}
+				alt="background"
+				className={imageShow === 4 ? 'absoluteImage' : 'absoluteImage hidden'}
+			/>
+			<img
+				src={background5}
+				alt="background"
+				className={imageShow === 5 ? 'absoluteImage' : 'absoluteImage hidden'}
+			/>
 			<h1>{language === 'portuguese' ? 'Álbum de Fotos' : 'Album Gallery'}</h1>
 
 			<select name="select" onChange={(e) => setLanguage(e.target.value)}>
