@@ -6,7 +6,7 @@ import './galleryStyles.scss';
 import { MdOutlineSearch } from 'react-icons/md';
 import Spinner from '../Spinner';
 
-const Gallery = ({ language, seeGallery, executeScroll }) => {
+const Gallery = ({ language, seeGallery }) => {
 	const [modelOpen, setModelOpen] = useState(false);
 	const [modelPhoto, setModelPhoto] = useState(null);
 	const [displayData, setDisplayData] = useState([]);
@@ -29,7 +29,6 @@ const Gallery = ({ language, seeGallery, executeScroll }) => {
 
 	useEffect(() => {
 		if (!data) return;
-		console.log(data.photos, 'effect');
 		const newData = data.photos;
 		newData.forEach((photo) => {
 			const ratio = photo.height / photo.width < 1 ? 2 : 1;
