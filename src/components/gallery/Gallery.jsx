@@ -4,7 +4,7 @@ import './galleryStyles.scss';
 
 //icons
 import { MdOutlineSearch } from 'react-icons/md';
-import Spinner from '../Spinner';
+import Spinner from '../loaders/Spinner';
 
 const Gallery = ({ language, seeGallery }) => {
 	const [modelOpen, setModelOpen] = useState(false);

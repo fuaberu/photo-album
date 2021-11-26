@@ -15,63 +15,81 @@
 
 .header {
 	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
+	width: 100vw;
 	position: relative;
-	overflow: hidden;
-	.absoluteImage {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
+	.header-container {
 		height: 100%;
 		width: 100%;
-		object-fit: cover;
-		transition: 1s;
-		z-index: -1;
-	}
-	.hidden {
-		opacity: 0;
-	}
-	h1 {
-		font-size: 50px;
-		color: #fff;
-		text-shadow: -1px 1px 0 #000;
-		font-weight: 700;
-		text-align: center;
-		text-transform: uppercase;
-	}
-	select {
-		background: none;
-		padding: 0.5rem 1.5rem;
-		border: 2px solid #fff;
-		outline-color: #fff;
-		color: #fff;
-		font-size: 1rem;
-		font-weight: 700;
-		cursor: pointer;
-		option {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+		position: relative;
+		overflow: hidden;
+		transition: 0.3s;
+		.absoluteImage {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			transition: 1s;
+			z-index: -1;
+		}
+		.hidden {
+			opacity: 0;
+		}
+		h1 {
+			font-size: 50px;
+			color: #fff;
+			text-shadow: -1px 1px 0 #000;
+			font-weight: 700;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		select {
+			background: none;
 			padding: 0.5rem 1.5rem;
+			border: 2px solid #fff;
+			outline-color: #fff;
+			color: #fff;
+			font-size: 1rem;
+			font-weight: 700;
 			cursor: pointer;
-			color: #000;
+			&:hover {
+				background-color: #fff;
+				border: 2px solid #000;
+				color: #000;
+			}
+			option {
+				padding: 0.5rem 1.5rem;
+				cursor: pointer;
+				color: #000;
+			}
+		}
+		button {
+			padding: 1rem 2rem;
+			background: none;
+			border: 2px solid #fff;
+			max-width: 90vw;
+			color: #fff;
+			font-size: 2rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			text-shadow: -1px 1px 0 #000;
+			cursor: pointer;
+			&:hover {
+				transform: scale(1.1);
+				background-color: #fff;
+				border: 2px solid #000;
+				color: #000;
+			}
 		}
 	}
-	button {
-		padding: 1rem 2rem;
-		background: none;
-		border: 2px solid #fff;
-		max-width: 90vw;
-		color: #fff;
-		font-size: 2rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		text-shadow: -1px 1px 0 #000;
-		cursor: pointer;
-		&:hover {
-			transform: scale(1.1);
-		}
+	.fade-out {
+		opacity: 0;
 	}
 }
