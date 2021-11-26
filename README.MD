@@ -1,17 +1,19 @@
 # Photo Album
 
-Photo Album é uma site para mostrar uma galeria de fotos utilizando [pexels API](https://www.pexels.com/api/).
+Photo Álbum é uma galeria de fotos que se utiliza das imagens provenientes da API da [pexels](https://www.pexels.com/api/). Organizando de forma responsiva e dinâmica as fotos em um grid de imagens. 
 
-O site pode ser visto atraves [deste link](https://photo-gallery-fuaberu.netlify.app/).
+O site pode ser acessado através [deste link](https://photo-gallery-fuaberu.netlify.app/).
 
-![Photo Album screenshot](https://github.com/fuaberu/my-portfolio/blob/3485346a3dc38558c313d1d0d402c62e8ea0e32d/src/assets/weather.png)
+## Screenshot
+
+![Photo Album screenshot](https://github.com/fuaberu/my-portfolio/blob/9dd49e498c9db72965c4505f90053e39c4b17cc0/src/assets/photo-gallery.png)
 
 ## Features
 
-- Site
 - Background dinâmico no cabeçalho.
-- Grid de imagens construído com css grid responsivo.
 - Barra de pesquisa para renderizar diferentes fotos.
+- Grid de imagens construído com css grid responsivo.
+- Lazy loading das imagens como paginação.
 
 ## Tecnologies
 
