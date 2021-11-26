@@ -9,6 +9,7 @@ import Loader from '../loaders/Loader';
 const Gallery = ({ language, seeGallery }) => {
 	const [modelOpen, setModelOpen] = useState(false);
 	const [modelPhoto, setModelPhoto] = useState(null);
+	const [isDisabled, setIsDisabled] = useState(false);
 	const [displayData, setDisplayData] = useState([]);
 	const [portrait, setPortrait] = useState();
 	const [landscape, setLandscape] = useState();
@@ -61,11 +62,18 @@ const Gallery = ({ language, seeGallery }) => {
 		const reordered = shuffle(newPhotos);
 
 		setDisplayData((prev) => [...prev, ...reordered]);
+
+		if (!portraitData.next_page || !landscapeData.next_page) {
+			setIsDisabled(true);
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [landscapeData, portraitData]);
 
 	const loadMore = () => {
-		if (!portraitData.next_page || !landscapeData.next_page) return;
+		if (!portraitData.next_page || !landscapeData.next_page) {
+			setIsDisabled(true);
+			return;
+		}
 		setPage(page + 1);
 	};
 
@@ -82,11 +90,13 @@ const Gallery = ({ language, seeGallery }) => {
 	//search
 	const handleSearch = (e) => {
 		e.preventDefault();
+
 		setQuery(search);
 		setDisplayData([]);
 		setPage(0);
 		loadMore();
 		setSearch('');
+		if (portraitData.next_page && landscapeData.next_page) setIsDisabled(false);
 	};
 
 	return (
@@ -149,9 +159,14 @@ const Gallery = ({ language, seeGallery }) => {
 						);
 					})}
 			</div>
-			<div className="controls">
-				<button onClick={() => loadMore()}>Load More</button>
-			</div>
+
+			{!isDisabled && (
+				<div className="controls">
+					<button onClick={() => loadMore()}>
+						{language === 'portuguese' ? 'Mostrar Mais' : 'Show More'}
+					</button>
+				</div>
+			)}
 		</main>
 	);
 };
