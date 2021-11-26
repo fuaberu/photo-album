@@ -61,7 +61,6 @@ const Gallery = ({ language, seeGallery }) => {
 		const reordered = shuffle(newPhotos);
 
 		setDisplayData((prev) => [...prev, ...reordered]);
-		console.log(displayData);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [landscapeData, portraitData]);
 
