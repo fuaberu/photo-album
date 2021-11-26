@@ -38,21 +38,25 @@ const Header = ({ language, setLanguage, executeScroll }) => {
 					src={background2}
 					alt="background"
 					className={imageShow === 2 ? 'absoluteImage' : 'absoluteImage hidden'}
+					loading="lazy"
 				/>
 				<img
 					src={background3}
 					alt="background"
 					className={imageShow === 3 ? 'absoluteImage' : 'absoluteImage hidden'}
+					loading="lazy"
 				/>
 				<img
 					src={background4}
 					alt="background"
 					className={imageShow === 4 ? 'absoluteImage' : 'absoluteImage hidden'}
+					loading="lazy"
 				/>
 				<img
 					src={background5}
 					alt="background"
 					className={imageShow === 5 ? 'absoluteImage' : 'absoluteImage hidden'}
+					loading="lazy"
 				/>
 				<h1>{language === 'portuguese' ? 'Álbum de Fotos' : 'Album Gallery'}</h1>
 
