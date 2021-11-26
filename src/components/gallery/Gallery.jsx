@@ -10,42 +10,63 @@ const Gallery = ({ language, seeGallery }) => {
 	const [modelOpen, setModelOpen] = useState(false);
 	const [modelPhoto, setModelPhoto] = useState(null);
 	const [displayData, setDisplayData] = useState([]);
+	const [portrait, setPortrait] = useState();
+	const [landscape, setLandscape] = useState();
 	const [page, setPage] = useState(1);
 	const [search, setSearch] = useState('');
 	const [query, setQuery] = useState('natureza');
 
-	const { data, isFetching } = useGetSearchPhotosQuery({
+	let count = 20;
+
+	if (window.innerWidth > 750) count = 30;
+	if (window.innerWidth > 1200) count = 40;
+
+	const { data: portraitData, isFetching: portraitIsFetching } = useGetSearchPhotosQuery({
 		query: query,
 		page: page,
-		count: 30,
+		count: count / 2,
+		orientation: 'portrait',
 	});
+	const { data: landscapeData, isFetching: landscapeIsFetching } =
+		useGetSearchPhotosQuery({
+			query: query,
+			page: page,
+			count: count / 2,
+			orientation: 'landscape',
+		});
 
-	const fullGrid = useRef(0);
-
-	const currentWidth = window.innerWidth;
-	let remainder = 2;
-	if (currentWidth > 750) remainder = 3;
-	if (currentWidth > 1200) remainder = 4;
+	function shuffle(array) {
+		let returnArray = [];
+		for (let i = 0; i < array.length / 2; i++) {
+			returnArray.push(array[i]);
+			returnArray.push(array[array.length - 1 - i]);
+		}
+		return returnArray;
+	}
 
 	useEffect(() => {
-		if (!data) return;
-		const newData = data.photos;
-		newData.forEach((photo) => {
-			const ratio = photo.height / photo.width < 1 ? 2 : 1;
-			if ((fullGrid.current + ratio) % remainder === 0) {
-				//completes grid
-				setDisplayData((prev) => [...prev, photo]);
-				fullGrid.current += ratio;
-			} else if (fullGrid.current <= page * 6 * remainder) {
-				setDisplayData((prev) => [...prev, photo]);
-				fullGrid.current += ratio;
-			}
-		});
+		if (!landscapeData || !portraitData) return;
+
+		const newPortrait = portraitData.photos;
+		const newLandscape = landscapeData.photos;
+
+		//check is is not seding the data two times
+		if (newPortrait === portrait || newLandscape === landscape) return;
+
+		setLandscape(newLandscape);
+		setPortrait(newPortrait);
+
+		const newPhotos = [...newPortrait, ...newLandscape];
+
+		const reordered = shuffle(newPhotos);
+
+		setDisplayData((prev) => [...prev, ...reordered]);
+		console.log(displayData);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data]);
+	}, [landscapeData, portraitData]);
 
 	const loadMore = () => {
-		if (!data.next_page) return;
+		if (!portraitData.next_page || !landscapeData.next_page) return;
 		setPage(page + 1);
 	};
 
@@ -107,7 +128,7 @@ const Gallery = ({ language, seeGallery }) => {
 						</a>
 					</div>
 				)}
-				{isFetching && <Spinner />}
+				{(portraitIsFetching || landscapeIsFetching) && <Spinner />}
 				{displayData &&
 					displayData.map((photo, index) => {
 						return (
