@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGetSearchPhotosQuery } from '../../services/pexels';
 import './galleryStyles.scss';
 
