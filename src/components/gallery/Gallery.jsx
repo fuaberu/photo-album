@@ -4,7 +4,7 @@ import './galleryStyles.scss';
 
 //icons
 import { MdOutlineSearch } from 'react-icons/md';
-import Spinner from '../loaders/Spinner';
+import Loader from '../loaders/Loader';
 
 const Gallery = ({ language, seeGallery }) => {
 	const [modelOpen, setModelOpen] = useState(false);
@@ -128,7 +128,7 @@ const Gallery = ({ language, seeGallery }) => {
 						</a>
 					</div>
 				)}
-				{(portraitIsFetching || landscapeIsFetching) && <Spinner />}
+				{(portraitIsFetching || landscapeIsFetching) && <Loader />}
 				{displayData &&
 					displayData.map((photo, index) => {
 						return (
