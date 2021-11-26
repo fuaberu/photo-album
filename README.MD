@@ -8,7 +8,6 @@ O site pode ser visto atraves [deste link](https://photo-gallery-fuaberu.netlify
 
 ## Features
 
-- Site
 - Background dinâmico no cabeçalho.
 - Grid de imagens construído com css grid responsivo.
 - Barra de pesquisa para renderizar diferentes fotos.
